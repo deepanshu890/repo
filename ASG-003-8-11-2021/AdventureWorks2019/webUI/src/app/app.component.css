@@ -1,0 +1,57 @@
+mat-toolbar {
+  background: #004a9f;
+  color: white;
+}
+mat-toolbar-row {
+  justify-content: left;
+  width: 120px;
+}
+mat-sidenav {
+  margin: 0px;
+  width: 200px;
+  border-right: none;
+  background: #d7dbdf;
+  color: white;
+  
+  padding: 16px;
+  text-align: center;
+}
+
+.content {
+  height: 1000px;
+  width:1000px;
+  border-radius: 10px;
+  margin: 16px;
+  margin-left: 32px;
+  background-size: 100%;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 2rem;
+  color: lightgray;
+}
+
+mat-sidenav-container {
+  height: calc(100vh - 65px);
+}
+/* body {
+  background-color: rgb(57, 105, 145);
+} */
+
+.content{
+    margin-left: 250px;
+    background-position:center;
+    background-size:cover;
+    height:100vh;
+
+
+}
+#check:checked~.content{
+    margin-left:60px;
+}
+
+  button {
+    margin-left: -17px;    
+  }

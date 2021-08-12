@@ -1,0 +1,59 @@
+<form [formGroup]="formValue" class="normal-form">
+    <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter First Name</mat-label>
+          <input matInput placeholder="Rahul" [formControl]="firstName" required>
+       
+        </mat-form-field>
+      </div>
+
+      <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter Last Name</mat-label>
+          <input matInput placeholder="Rahul" [formControl]="lastName" required>       
+        </mat-form-field>
+      </div>
+
+      <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Address</mat-label>
+          <input matInput placeholder="123 rajpur road" [formControl]="address" required>       
+        </mat-form-field>
+      </div>
+
+      <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>City</mat-label>
+          <input matInput placeholder="haldwani" [formControl]="city" required>       
+        </mat-form-field>
+      </div>
+
+      <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>State Provinance Id</mat-label>
+          <input matInput placeholder="12" [formControl]="stateProvinanceId" required>       
+        </mat-form-field>
+      </div>
+
+      <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Postal Code</mat-label>
+          <input matInput placeholder="123" [formControl]="postalCode" required>       
+        </mat-form-field>
+      </div>
+
+    
+      
+
+
+
+    <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your email</mat-label>
+          <input matInput placeholder="pat@example.com" [formControl]="email" required>
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+      
+</form>
+<button type="button"  (click)="postEmployeeDetails()" class="btn btn-primary">Add</button>
