@@ -1,0 +1,13 @@
+D:\mivation\assignment\repo\ASG-003-8-16-2021\Company\Company.DAL\bin\Debug\netcoreapp3.1\Company.DAL.deps.json
+D:\mivation\assignment\repo\ASG-003-8-16-2021\Company\Company.DAL\bin\Debug\netcoreapp3.1\Company.DAL.runtimeconfig.json
+D:\mivation\assignment\repo\ASG-003-8-16-2021\Company\Company.DAL\bin\Debug\netcoreapp3.1\Company.DAL.runtimeconfig.dev.json
+D:\mivation\assignment\repo\ASG-003-8-16-2021\Company\Company.DAL\bin\Debug\netcoreapp3.1\Company.DAL.dll
+D:\mivation\assignment\repo\ASG-003-8-16-2021\Company\Company.DAL\bin\Debug\netcoreapp3.1\Company.DAL.pdb
+D:\mivation\assignment\repo\ASG-003-8-16-2021\Company\Company.DAL\obj\Debug\netcoreapp3.1\Company.DAL.csproj.AssemblyReference.cache
+D:\mivation\assignment\repo\ASG-003-8-16-2021\Company\Company.DAL\obj\Debug\netcoreapp3.1\Company.DAL.AssemblyInfoInputs.cache
+D:\mivation\assignment\repo\ASG-003-8-16-2021\Company\Company.DAL\obj\Debug\netcoreapp3.1\Company.DAL.AssemblyInfo.cs
+D:\mivation\assignment\repo\ASG-003-8-16-2021\Company\Company.DAL\obj\Debug\netcoreapp3.1\Company.DAL.csproj.CoreCompileInputs.cache
+D:\mivation\assignment\repo\ASG-003-8-16-2021\Company\Company.DAL\obj\Debug\netcoreapp3.1\Company.DAL.dll
+D:\mivation\assignment\repo\ASG-003-8-16-2021\Company\Company.DAL\obj\Debug\netcoreapp3.1\Company.DAL.pdb
+D:\mivation\assignment\repo\ASG-003-8-16-2021\Company\Company.DAL\obj\Debug\netcoreapp3.1\Company.DAL.genruntimeconfig.cache
+D:\mivation\assignment\repo\ASG-003-8-16-2021\Company\Company.DAL\bin\Debug\netcoreapp3.1\appsettings.json

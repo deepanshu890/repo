@@ -1,0 +1,63 @@
+<form class="normal-form" #formGroup="ngForm" (ngSubmit)="onSubmit(formGroup.value)" >
+    <mat-grid-list cols="2" rowHeight="300px">
+        <mat-grid-tile>
+            <div class="controles-container">
+
+                <mat-form-field>
+                    <input name="userfirstName" #userfirstName="ngModel" [ngModel]="firstName" matInput placeholder="First Name">
+                    <mat-error>This field is mandatory.</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input name="userlastName" #userlastName="ngModel" [ngModel]="lastName" matInput placeholder="Last Name">
+                    <mat-error>This field is mandatory.</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input name="useremailId" #useremailId="ngModel" [ngModel]="emailId" matInput placeholder="Email">
+                    <mat-error>Invalid email address.</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input name="usermobileNumber" #usermobileNumber="ngModel" [ngModel]="mobileNumber" matInput placeholder="Mobile">
+                    
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input name="userCity" #userCity="ngModel" [ngModel]="city" matInput placeholder="City">
+                </mat-form-field>
+
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <div class="controles-container">
+                <mat-form-field>
+                    <input  name="userGender" #userGender="ngModel" [ngModel]="gender" matInput placeholder="Gender">
+                    <mat-error>This field is mandatory.</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input name="userAddress" #userAddress="ngModel" [ngModel]="address" matInput placeholder="Address">
+                    <mat-error>This field is mandatory.</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input name="userState" #userState="ngModel" [ngModel]="state" matInput placeholder="State">
+                    <mat-error>This field is mandatory.</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input name="userPin" #userPin="ngModel" [ngModel]="pin" matInput placeholder="Pincode">
+                    <mat-error>This field is mandatory.</mat-error>
+                </mat-form-field>
+                <br>
+                <div class="controles-container">
+                    <div class="button-row">
+                        <button mat-raised-button color="primary" type="submit" >Update</button>
+                        <button mat-raised-button color="warn" routerLink="/viewUser">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</form>

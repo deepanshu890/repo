@@ -1,0 +1,126 @@
+<!-- <section class="example-section" [formGroup]="toppings">
+  <h4>Select:</h4>
+  <p><mat-checkbox formControlName="businessEntityId">Business Id</mat-checkbox></p>
+  <p><mat-checkbox formControlName="addressId">Address Id</mat-checkbox></p>
+  <p><mat-checkbox formControlName="firstName">First Name</mat-checkbox></p>
+  <p><mat-checkbox formControlName="lastName">Last Name</mat-checkbox></p>
+  <p><mat-checkbox formControlName="emailAddress">Email</mat-checkbox></p>
+  <p><mat-checkbox formControlName="addressLine1">Address</mat-checkbox></p>
+  <p><mat-checkbox formControlName="city">City</mat-checkbox></p>
+</section>
+
+<section class="example-section" [formGroup]="toppings">
+  <h4>You chose:</h4>
+  {{toppings.value | json}}
+</section> -->
+<div>
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8 center">
+      <!-- <div class="spinner-container" *ngIf="listData.loading$ | async">
+            <mat-spinner></mat-spinner>
+        </div> -->
+      <div class="card">
+        <div class="thead">
+          <div class="demo-button-container">
+            <button mat-raised-button style="float:right" class="btn btn-sm btn-primary top-margin"
+              #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="mainMenuButton">
+              Hide/Show columns
+            </button>
+          </div>
+          <mat-menu #mainMenuButton="matMenu">
+
+
+            <section class="example-section" [formGroup]="formValue">
+
+              <mat-checkbox formControlName="businessEntityID" (click)="onSubmit(formValue.value)">BusinessEntityID
+              </mat-checkbox><br>
+              <mat-checkbox formControlName="addressId" (click)="onSubmit(formValue.value)">AddressId</mat-checkbox><br>
+              <mat-checkbox formControlName="firstName" (click)="onSubmit(formValue.value)">FirstName</mat-checkbox><br>
+              <mat-checkbox formControlName="lastName" (click)="onSubmit(formValue.value)">LastName</mat-checkbox><br>
+              <mat-checkbox formControlName="emailAddress" (click)="onSubmit(formValue.value)">EmailAddress>
+              </mat-checkbox><br>
+
+              <mat-checkbox formControlName="addressLine1" (click)="onSubmit(formValue.value)">AddressLine1
+              </mat-checkbox><br>
+              <mat-checkbox formControlName="city" (click)="onSubmit(formValue.value)">City</mat-checkbox><br>
+              <mat-checkbox formControlName="actions" (click)="onSubmit(formValue.value)">Actions</mat-checkbox><br>
+            </section>
+
+          </mat-menu>
+          <section class="example-section" [formGroup]="formValue">
+            <h4>You chose:</h4>
+            {{formValue.value | json}}
+          </section>
+        </div>
+
+        <mat-form-field appearance="standard">
+          <mat-label>Filter</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+        </mat-form-field>
+
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+          <ng-container matColumnDef="businessEntityId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Business Id</th>
+            <td mat-cell *matCellDef="let element"> {{element.businessEntityId}} </td>
+          </ng-container>
+          <ng-container matColumnDef="addressId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Address Id</th>
+            <td mat-cell *matCellDef="let element"> {{element.addressId}} </td>
+          </ng-container>
+          <ng-container matColumnDef="firstName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name</th>
+            <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+          </ng-container>
+          <ng-container matColumnDef="lastName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name</th>
+            <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="emailAddress">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Email</th>
+            <td mat-cell *matCellDef="let element"> {{element.emailAddress}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="addressLine1">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Address</th>
+            <td mat-cell *matCellDef="let element"> {{element.addressLine1}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="city">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> City</th>
+            <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+          </ng-container>
+
+          <!-- <ng-container matColumnDef="phoneNumber">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> PhoneNumber</th>
+            <td mat-cell *matCellDef="let element"> {{element.phoneNumber}} </td>
+          </ng-container> -->
+
+          <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <button mat-icon-button (click)="updateEmployee(element)">
+                <mat-icon>launch</mat-icon>
+              </button>
+              <button mat-icon-button color="warn">
+                <mat-icon>delete_outline</mat-icon>
+              </button>
+            </mat-cell>
+          </ng-container>
+
+
+          <tr mat-header-row *matHeaderRowDef="customColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: customColumns;"></tr>
+
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+          </tr>
+
+
+
+        </table>
+        <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+        </mat-paginator>
+
+      </div>

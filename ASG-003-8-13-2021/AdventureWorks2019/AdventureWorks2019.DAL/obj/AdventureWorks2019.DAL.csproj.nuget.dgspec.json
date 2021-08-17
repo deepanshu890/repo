@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\mivation\\assignment\\repo\\ASG-003-8-11-2021\\AdventureWorks2019\\AdventureWorks2019.DAL\\AdventureWorks2019.DAL.csproj": {}
+    "D:\\mivation\\assignment\\repo\\ASG-003-8-13-2021\\AdventureWorks2019\\AdventureWorks2019.DAL\\AdventureWorks2019.DAL.csproj": {}
   },
   "projects": {
-    "D:\\mivation\\assignment\\repo\\ASG-003-8-11-2021\\AdventureWorks2019\\AdventureWorks2019.DAL\\AdventureWorks2019.DAL.csproj": {
+    "D:\\mivation\\assignment\\repo\\ASG-003-8-13-2021\\AdventureWorks2019\\AdventureWorks2019.DAL\\AdventureWorks2019.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\mivation\\assignment\\repo\\ASG-003-8-11-2021\\AdventureWorks2019\\AdventureWorks2019.DAL\\AdventureWorks2019.DAL.csproj",
+        "projectUniqueName": "D:\\mivation\\assignment\\repo\\ASG-003-8-13-2021\\AdventureWorks2019\\AdventureWorks2019.DAL\\AdventureWorks2019.DAL.csproj",
         "projectName": "AdventureWorks2019.DAL",
-        "projectPath": "D:\\mivation\\assignment\\repo\\ASG-003-8-11-2021\\AdventureWorks2019\\AdventureWorks2019.DAL\\AdventureWorks2019.DAL.csproj",
+        "projectPath": "D:\\mivation\\assignment\\repo\\ASG-003-8-13-2021\\AdventureWorks2019\\AdventureWorks2019.DAL\\AdventureWorks2019.DAL.csproj",
         "packagesPath": "C:\\Users\\deepanshu.musyuni\\.nuget\\packages\\",
-        "outputPath": "D:\\mivation\\assignment\\repo\\ASG-003-8-11-2021\\AdventureWorks2019\\AdventureWorks2019.DAL\\obj\\",
+        "outputPath": "D:\\mivation\\assignment\\repo\\ASG-003-8-13-2021\\AdventureWorks2019\\AdventureWorks2019.DAL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\deepanshu.musyuni\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -70,7 +70,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\3.1.411\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\3.1.412\\RuntimeIdentifierGraph.json"
         }
       }
     }
