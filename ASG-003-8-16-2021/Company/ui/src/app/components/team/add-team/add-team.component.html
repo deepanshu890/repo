@@ -1,0 +1,47 @@
+<!-- <mat-toolbar>  
+    
+    <button class="btn-dialog-close" mat-stroked-button (click)="onClose()"><mat-icon>clear</mat-icon></button>
+  </mat-toolbar> -->
+  <form class="normal-form" [formGroup]="addForm" (submit)="onSubmit()">
+    <mat-grid-list cols="2" rowHeight="300px">
+        <mat-grid-tile>
+            <div class="controles-container">
+
+                <mat-form-field>
+                    <input formControlName="teamName" matInput placeholder="Team Name">
+                    <mat-error>This field is mandatory.</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input formControlName="projectName" matInput placeholder="Project Name">
+                    <mat-error>This field is mandatory.</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input formControlName="year" matInput placeholder="Year">
+                
+                </mat-form-field>                
+
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <div class="controles-container">
+               
+                <mat-form-field>
+                    <input formControlName="members" matInput placeholder="Members">
+                    
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input formControlName="isActive" matInput placeholder="Is Active">
+                </mat-form-field>
+                <div class="controles-container">
+                    <div class="button-row">
+                        <button mat-raised-button color="primary" type="submit" [disabled]="!addForm.valid">Submit</button>
+                        <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</form>

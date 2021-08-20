@@ -121,8 +121,8 @@ export class ViewUserComponent implements OnInit, AfterViewInit,OnDestroy {
     prod.emailId, prod.gender, prod.phoneNumber,prod.addressLine, prod.city, prod.state,prod.pincode]);
   }
 
-  removeProductFromCart(prod: IUser) {
-    this.service.deleteCartProduct(prod.userId, prod.addressId).subscribe(
+  removeUser(prod: IUser) {
+    this.service.deleteUser(prod.userId, prod.addressId).subscribe(
       responseRemoveCartProductStatus => {
         this.status = responseRemoveCartProductStatus;
         if (this.status) {

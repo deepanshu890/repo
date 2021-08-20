@@ -6,11 +6,19 @@ mat-toolbar {
     justify-content: left;
     width: 120px;
   }
+
+  button.ham{
+    margin-left: 2px;
+    margin-right: 5px;
+    color: #004a9f;
+  }
+ 
+
   mat-sidenav {
     margin: 0px;
     width: 200px;
     border-right: none;
-    background: #ee9919;
+    background: #004a9f;
     color: white;
     
     padding: 16px;

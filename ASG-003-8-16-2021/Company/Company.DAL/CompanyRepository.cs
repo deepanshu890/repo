@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using Company.DAL.Models;
 using System.Linq;
-using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Company.DAL
 {
@@ -15,20 +16,20 @@ namespace Company.DAL
             context = new CompanyDBContext();
         }
 
-        public List<Users> GetUsers()
+        public async Task<List<Users>> GetUsers()
         {
 
-            var u = (from category in context.Users
-                     select category).ToList();
+            var u = await (from category in context.Users
+                     select category).ToListAsync();
             return u;
         }
 
-        public List<AddressUsers> GetUsersDetails()
+        public async Task<List<AddressUsers>> GetUsersDetails()
         {
-            
 
+            //await Task.Delay(3000);
            // List<AddressUsers> result1 = null;
-              return (from i in context.Address
+              return await(from i in context.Address
                       join s in context.Users on i.AddressId equals s.AddressId
                       select new AddressUsers
                       {
@@ -43,12 +44,13 @@ namespace Company.DAL
                           EmailId = s.EmailId,
                           Gender = s.Gender,
                           PhoneNumber  = s.PhoneNumber
-                      }).ToList();
+                      }).ToListAsync();
             //return result1;
         }
 
-        public int AddAddress(Address e)
+        public async Task<int> AddAddress(Address e)
         {
+           // await Task.Delay(3000);
             int status = 0;
             Address category = new Address();
             category.AddressLine = e.AddressLine;
@@ -58,8 +60,8 @@ namespace Company.DAL
             
             try
             {
-                context.Address.Add(category);
-                context.SaveChanges();
+               await context.Address.AddAsync(category);
+               await context.SaveChangesAsync();
                 status = (from record in context.Address orderby record.AddressId select record.AddressId).Last();
 
             }
@@ -71,7 +73,7 @@ namespace Company.DAL
             return status;
         }
 
-        public bool AddUsers(Users e)
+        public async Task<bool> AddUsers(Users e)
         {
             int id = 0;
             bool status = false;
@@ -84,8 +86,8 @@ namespace Company.DAL
             category.PhoneNumber = e.PhoneNumber;
             try
             {
-                context.Users.Add(category);
-                context.SaveChanges();
+                await context.Users.AddAsync(category);
+                await context.SaveChangesAsync();
                 status = true;
             }
             catch (Exception ex)
@@ -96,7 +98,7 @@ namespace Company.DAL
             return status;
         }
 
-        public bool UpdateUser(Users dep)
+        public async Task<bool> UpdateUser(Users dep)
         {
             bool status = false;
             Users category = context.Users.Find(dep.UserId);
@@ -110,7 +112,7 @@ namespace Company.DAL
                     category.Gender = dep.Gender;
                     category.PhoneNumber = dep.PhoneNumber;
                  
-                    context.SaveChanges();
+                    await context.SaveChangesAsync();
                     status = true;
                 }
                 else
@@ -126,7 +128,7 @@ namespace Company.DAL
             return status;
         }
 
-        public bool UpdateAddress(Address dep)
+        public async Task<bool> UpdateAddress(Address dep)
         {
             bool status = false;
             Address category = context.Address.Find(dep.AddressId);
@@ -140,7 +142,7 @@ namespace Company.DAL
                     category.Pincode = dep.Pincode;
             
 
-                    context.SaveChanges();
+                   await context.SaveChangesAsync();
                     status = true;
                 }
                 else
@@ -156,7 +158,7 @@ namespace Company.DAL
             return status;
         }
 
-        public bool DeleteUser(int userId)
+        public async Task<bool> DeleteUser(int userId)
         {
             Users product = null;
             bool status = false;
@@ -166,7 +168,7 @@ namespace Company.DAL
                 if (product != null)
                 {
                     context.Users.Remove(product);
-                    context.SaveChanges();
+                    await context.SaveChangesAsync();
                     status = true;
                 }
                 else
@@ -183,7 +185,7 @@ namespace Company.DAL
             return status;
         }
 
-        public bool DeleteAddress(int addressId)
+        public async Task<bool> DeleteAddress(int addressId)
         {
             Address product = null;
             bool status = false;
@@ -193,7 +195,7 @@ namespace Company.DAL
                 if (product != null)
                 {
                     context.Address.Remove(product);
-                    context.SaveChanges();
+                    await context.SaveChangesAsync();
                     status = true;
                 }
                 else
@@ -210,8 +212,189 @@ namespace Company.DAL
             return status;
         }
 
+        public async Task<bool> DeleteForeignUser(int userId)
+        {
+            TeamMembers product = null;
+            List<TeamMembers> t = new List<TeamMembers>();
+           var t1 = (from i in context.TeamMembers
+                 where i.UserId == userId
+                 select i.Sno).ToList();
+            bool status = false;
+            try
+            {
+                foreach(var i in t1)
+                {
+                    product = context.TeamMembers.Find(i);
+                    if (product != null)
+                    {
+                        context.TeamMembers.Remove(product);
+                        await context.SaveChangesAsync();
+                        status = true;
+                    }
+                    else
+                    {
+                        status = false;
+                    }
+                }
+             
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.InnerException);
+                status = false;
+            }
+            return status;
+        }
 
+        public async Task<bool> AddTeam(Team e)
+        {
+            bool status = false;
+            Team category = new Team();
+            category.TeamName = e.TeamName;
+            category.ProjectName = e.ProjectName;
+            category.Year = e.Year;
+            category.Members = e.Members;
+            category.IsActive = e.IsActive;
 
+            try
+            {
+                await context.Team.AddAsync(category);
+                await context.SaveChangesAsync ();
+                //status = (from record in context.Address orderby record.AddressId select record.AddressId).Last();
+                status = true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                status = false;
+            }
+            return status;
+        }
+
+        public async Task<bool> UpdateTeam(Team dep)
+        {
+            bool status = false;
+            Team category = context.Team.Find(dep.TeamId);
+            try
+            {
+                if (category != null)
+                {
+                    category.TeamName = dep.TeamName;
+                    category.ProjectName = dep.ProjectName;
+                    category.Year = dep.Year;
+                    category.Members = dep.Members;
+                    category.IsActive = dep.IsActive;
+
+                    await context.SaveChangesAsync ();
+                    status = true;
+                }
+                else
+                {
+                    status = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                status = false;
+            }
+            return status;
+        }
+
+        public async Task<List<Team>> GetTeam()
+        {
+
+            var u = await (from category in context.Team
+                     select category).ToListAsync();
+            return u;
+        }
+
+        public async Task<bool> DeleteTeam(int teamId)
+        {
+            Team product = null;
+            bool status = false;
+            try
+            {
+                product = context.Team.Find(teamId);
+                if (product != null)
+                {
+                    context.Team.Remove(product);
+                    await context.SaveChangesAsync();
+                    status = true;
+                }
+                else
+                {
+                    status = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.InnerException);
+                status = false;
+            }
+            return status;
+        }
+
+        public async Task<bool> DeleteForeignTeam(int teamId)
+        {
+            TeamMembers product = null;
+            List<TeamMembers> t = new List<TeamMembers>();
+            var t1 = (from i in context.TeamMembers
+                      where i.TeamId == teamId
+                      select i.Sno).ToList();
+            bool status = false;
+            try
+            {
+                foreach (var i in t1)
+                {
+                    product = context.TeamMembers.Find(i);
+                    if (product != null)
+                    {
+                        context.TeamMembers.Remove(product);
+                        await context.SaveChangesAsync();
+                        status = true;
+                    }
+                    else
+                    {
+                        status = false;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.InnerException);
+                status = false;
+            }
+            return status;
+        }
+
+        public async Task<List<AddressUsers>> getTeamMembers(int teamId)
+        {
+            return await (from i in context.Team
+                    where i.TeamId == teamId
+                    join s in context.TeamMembers on i.TeamId equals s.TeamId
+                    join u in context.Users on s.UserId equals u.UserId
+                    join a in context.Address on u.AddressId equals a.AddressId
+                    
+                    select new AddressUsers
+                    {
+                        AddressId = a.AddressId,
+                        AddressLine = a.AddressLine,
+                        City = a.City,
+                        Pincode = a.Pincode,
+                        State = a.State,
+                        UserId = u.UserId,
+                        FirstName = u.FirstName,
+                        LastName = u.LastName,
+                        EmailId = u.EmailId,
+                        Gender = u.Gender,
+                        PhoneNumber = u.PhoneNumber
+                    }).ToListAsync();
+        }
     }
 }
 

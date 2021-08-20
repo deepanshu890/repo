@@ -1,0 +1,89 @@
+<div class="container">
+    <mat-card class="first">
+        <mat-form-field appearance="standard">
+            <mat-label>Filter</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+        </mat-form-field>
+        <div class="example-button-row">
+            <button mat-raised-button (click)="onCreate()">
+                <mat-icon>add</mat-icon>Create
+            </button>
+            
+        </div>
+    </mat-card>
+
+    <mat-card class="second">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+            <!-- <ng-container matColumnDef="column.name" *ngFor="let column of initColumns;">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>{{column.display}}</th>
+                <td mat-cell *matCellDef="let element">{{element[column.name]}}</td>
+            </ng-container> -->
+            <ng-container matColumnDef="teamId">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Team Id</th>
+                <td mat-cell *matCellDef="let element"> {{element.teamId}} </td>
+            </ng-container>
+            <ng-container matColumnDef="teamName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Team Name</th>
+                <td mat-cell *matCellDef="let element"> {{element.teamName}} </td>
+            </ng-container>
+            <ng-container matColumnDef="projectName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Project Name</th>
+                <td mat-cell *matCellDef="let element"> {{element.projectName}} </td>
+            </ng-container>
+            <ng-container matColumnDef="year">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Year</th>
+                <td mat-cell *matCellDef="let element"> {{element.year}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="members">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Members</th>
+                <td mat-cell *matCellDef="let element"> {{element.members}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="isActive">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Is Active</th>
+                <td mat-cell *matCellDef="let element"> {{element.isActive}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef>Actions</th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-icon-button (click)="onEdit(element)">
+                        <mat-icon>update</mat-icon>
+                    </button>
+                    <button mat-icon-button color="warn" (click)="removeTeam(element)">
+                        <mat-icon>delete_outline</mat-icon>
+                    </button>
+                    <button mat-icon-button color="accent" >
+                        <mat-icon>add</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="onView(element.teamId)" >
+                        <mat-icon>launch</mat-icon>
+                    </button>
+                    
+                    
+
+            </ng-container>
+
+
+
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+            </tr>
+
+
+
+        </table>
+    </mat-card>
+    <mat-card class="third">
+        <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+        </mat-paginator>
+    </mat-card>
+
+</div>

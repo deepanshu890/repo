@@ -1,7 +1,7 @@
 <mat-toolbar color="blue">
   <mat-toolbar-row>
-    <button mat-mini-fab color="warn" (click)="sidenav.toggle();" aria-label="Example icon button with a menu icon">
-      <mat-icon>menu</mat-icon>
+    <button class = "ham" mat-mini-fab color="warn" (click)="sidenav.toggle();" aria-label="Example icon button with a menu icon">
+      <mat-icon class ="ham1">menu</mat-icon>
     </button>
     
     <h1>Employee Database</h1>
@@ -11,7 +11,7 @@
   <mat-sidenav #sidenav mode="side">
     <mat-nav-list>
       <a mat-list-item routerLink="/viewUser" routerLinkActive="active">Users</a>
-      <a mat-list-item routerLink="" routerLinkActive="active">Account</a>
+      <a mat-list-item routerLink="/viewTeam" routerLinkActive="active">Team</a>
       <a mat-list-item>About Us</a>
       <a mat-list-item>Contact Us</a>
     </mat-nav-list>

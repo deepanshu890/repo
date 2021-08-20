@@ -11,12 +11,13 @@ namespace Company.ConsoleUI
         {
             CompanyRepository rep = new CompanyRepository();
             List<AddressUsers> u;
-            var z = rep.GetUsersDetails();
-            foreach(var i in z)
+            u = rep.getTeamMembers(502);
+            foreach(var i in u)
             {
+                Console.WriteLine(i.UserId);
                 Console.WriteLine(i.FirstName);
-                Console.WriteLine(i.AddressLine);
+            }
             }
         }
     }
-}
+

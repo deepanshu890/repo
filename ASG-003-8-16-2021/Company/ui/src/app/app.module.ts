@@ -11,6 +11,9 @@ import { MaterialDesignModule } from './material-design/material-design.module';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { ViewTeamComponent } from './components/team/view-team/view-team.component';
+import { AddTeamComponent } from './components/team/add-team/add-team.component';
+import { ViewTeamMembersComponent } from './components/team/view-team-members/view-team-members.component';
 
 
 
@@ -19,7 +22,10 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
     AppComponent,
     ViewUserComponent,
     AddUserComponent,
-    EditUserComponent
+    EditUserComponent,
+    ViewTeamComponent,
+    AddTeamComponent,
+    ViewTeamMembersComponent
   ],
   imports: [
     BrowserModule,HttpClientModule,
@@ -29,6 +35,6 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents:[AddUserComponent]
+  entryComponents:[AddUserComponent,AddTeamComponent]
 })
 export class AppModule { }

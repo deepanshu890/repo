@@ -20,12 +20,12 @@ namespace Company.Services.Controllers
         }
 
         [HttpGet]
-        public JsonResult GetAllUsers()
+        public async Task<JsonResult> GetAllUsers()
         {
             List<DAL.Models.AddressUsers> products = new List<DAL.Models.AddressUsers>();
             try
             {
-                products = rep.GetUsersDetails();
+                products = await rep.GetUsersDetails();
             }
             catch (Exception ex)
             {
@@ -35,7 +35,7 @@ namespace Company.Services.Controllers
         }
 
         [HttpPost]
-        public JsonResult AddUser(User dep)
+        public async Task<JsonResult> AddUser(User dep)
         {
             bool status = false;
             string message;
@@ -47,7 +47,7 @@ namespace Company.Services.Controllers
                 p.State = dep.State;
                 p.Pincode = dep.Pincode;
                 
-                int id = rep.AddAddress(p);
+                int id = await rep.AddAddress(p);
 
                 DAL.Models.Users e = new DAL.Models.Users();
                 e.AddressId = id;
@@ -56,7 +56,7 @@ namespace Company.Services.Controllers
                 e.EmailId = dep.EmailId;
                 e.Gender = dep.Gender;
                 e.PhoneNumber = dep.PhoneNumber;
-                status = rep.AddUsers(e);
+                status = await rep.AddUsers(e);
 
                 if (status)
                     message = "Successful addition operation";
@@ -71,7 +71,7 @@ namespace Company.Services.Controllers
         }
 
         [HttpPut]
-        public bool UpdateUserDetails(Models.User emp)
+        public async Task<bool> UpdateUserDetails(Models.User emp)
         {
             bool status = false;
 
@@ -87,7 +87,7 @@ namespace Company.Services.Controllers
                 category.Gender = emp.Gender;
                 category.PhoneNumber = emp.PhoneNumber;
 
-               status =  rep.UpdateUser(category);
+               status = await rep.UpdateUser(category);
 
                 DAL.Models.Address e = new DAL.Models.Address();
                 e.AddressId = emp.AddressId;
@@ -96,7 +96,7 @@ namespace Company.Services.Controllers
                 e.State = emp.State;
                 e.Pincode = emp.Pincode;
             
-               status =  rep.UpdateAddress(e);
+               status = await rep.UpdateAddress(e);
 
           
             }
@@ -110,21 +110,24 @@ namespace Company.Services.Controllers
         }
 
         [HttpDelete]
-        public JsonResult DeleteUser(User u)
+        public async Task<JsonResult> DeleteUser(User u)
         {
             bool status = false;
             
 
             try
             {
-                rep.DeleteAddress(u.AddressId);
+                await rep.DeleteForeignUser(u.UserId);
+                await rep .DeleteUser(u.UserId);
+                
                
 
-                status = rep.DeleteUser(u.UserId);
+                status = await rep .DeleteAddress(u.AddressId);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.InnerException);
                 status = false;
             }
             return Json(status);
