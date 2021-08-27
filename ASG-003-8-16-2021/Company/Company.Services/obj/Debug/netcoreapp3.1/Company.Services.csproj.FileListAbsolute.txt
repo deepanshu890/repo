@@ -40,3 +40,11 @@ D:\mivation\assignment\repo\ASG-003-8-16-2021\Company\Company.Services\obj\Debug
 D:\mivation\assignment\repo\ASG-003-8-16-2021\Company\Company.Services\obj\Debug\netcoreapp3.1\Company.Services.dll
 D:\mivation\assignment\repo\ASG-003-8-16-2021\Company\Company.Services\obj\Debug\netcoreapp3.1\Company.Services.pdb
 D:\mivation\assignment\repo\ASG-003-8-16-2021\Company\Company.Services\obj\Debug\netcoreapp3.1\Company.Services.genruntimeconfig.cache
+D:\mivation\assignment\repo\ASG-003-8-16-2021\Company\Company.Services\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\mivation\assignment\repo\ASG-003-8-16-2021\Company\Company.Services\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\mivation\assignment\repo\ASG-003-8-16-2021\Company\Company.Services\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+D:\mivation\assignment\repo\ASG-003-8-16-2021\Company\Company.Services\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+D:\mivation\assignment\repo\ASG-003-8-16-2021\Company\Company.Services\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\mivation\assignment\repo\ASG-003-8-16-2021\Company\Company.Services\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+D:\mivation\assignment\repo\ASG-003-8-16-2021\Company\Company.Services\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\mivation\assignment\repo\ASG-003-8-16-2021\Company\Company.Services\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll

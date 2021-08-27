@@ -1,23 +1,45 @@
-<mat-toolbar color="blue">
-  <mat-toolbar-row>
-    <button class = "ham" mat-mini-fab color="warn" (click)="sidenav.toggle();" aria-label="Example icon button with a menu icon">
-      <mat-icon class ="ham1">menu</mat-icon>
-    </button>
-    
-    <h1>Employee Database</h1>
-  </mat-toolbar-row>
-</mat-toolbar>
-<mat-sidenav-container>
-  <mat-sidenav #sidenav mode="side">
-    <mat-nav-list>
-      <a mat-list-item routerLink="/viewUser" routerLinkActive="active">Users</a>
-      <a mat-list-item routerLink="/viewTeam" routerLinkActive="active">Team</a>
-      <a mat-list-item>About Us</a>
-      <a mat-list-item>Contact Us</a>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <router-outlet></router-outlet>
-    <div style="height : 88vh;"></div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<div *ngIf = "invalidLogin">
+  <mat-toolbar color="blue">
+    <mat-toolbar-row>
+      <button class="ham" mat-mini-fab color="warn" (click)="sidenav.toggle();"
+        aria-label="Example icon button with a menu icon">
+        <mat-icon class="ham1">menu</mat-icon>
+      </button>
+     
+  
+      <h1>Employee Database</h1>
+      <div class="demo-button-container">
+        <button mat-raised-button style="flex:auto;" class="btn btn-sm btn-primary top-margin" [matMenuTriggerFor]="menu">
+          Account
+        </button>
+  
+  
+        <mat-menu #menu="matMenu">
+          
+          <mat-button mat-menu-item routerLink="/switch">Switch Account</mat-button>
+          <mat-button mat-menu-item (click)="logOut()">Log out</mat-button>
+        </mat-menu>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav mode="side">
+      <mat-nav-list>
+        <a mat-list-item routerLink="/viewUser" routerLinkActive="active">All Users</a>
+        <a mat-list-item routerLink="/viewTeam" routerLinkActive="active">Team</a>
+        <a mat-list-item routerLink="/viewAccount" routerLinkActive="active">Account</a>
+        <a mat-list-item routerLink="/accountUsers" routerLinkActive="active">Users</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+      <div style="height : 88vh;"></div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+<router-outlet></router-outlet>
+<div *ngIf = "!invalidLogin">
+  <app-login></app-login>
+</div>
+
+

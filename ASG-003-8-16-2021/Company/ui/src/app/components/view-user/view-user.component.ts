@@ -10,6 +10,7 @@ import { AfterViewInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddUserComponent } from '../add-user/add-user.component';
 import { Subscription } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-view-user',
@@ -17,8 +18,9 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./view-user.component.css']
 })
 export class ViewUserComponent implements OnInit, AfterViewInit,OnDestroy {
+  durationInSeconds: number = 5;
 
-  constructor(private service: ServiceService, private router: Router,
+  constructor(private service: ServiceService, private router: Router,private _snackBar: MatSnackBar,
     private dialog: MatDialog) { }
   EmployeeList: IUser[] = [];
   initColumns: any[] = [
@@ -123,15 +125,22 @@ export class ViewUserComponent implements OnInit, AfterViewInit,OnDestroy {
 
   removeUser(prod: IUser) {
     this.service.deleteUser(prod.userId, prod.addressId).subscribe(
-      responseRemoveCartProductStatus => {
-        this.status = responseRemoveCartProductStatus;
-        if (this.status) {
-          alert("User deleted successfully.");
-          this.ngOnInit();
-        }
-        else {
-          alert("User could not be deleted. Please try after sometime.");
-        }
+      data => {
+        this.status = data;
+        if(confirm("Are you sure to delete ?")){
+          if (this.status) {
+            this._snackBar.open("User deleted successfully","ok", {
+              duration: this.durationInSeconds * 1000,
+            });
+            //alert("Team deleted successfully.");
+            this.ngOnInit();
+          }
+          else {
+            this._snackBar.open("Something went wrong","ok", {
+              duration: this.durationInSeconds * 1000,
+            });
+            //alert("Something went wrong");
+          }}
       });
   }
 

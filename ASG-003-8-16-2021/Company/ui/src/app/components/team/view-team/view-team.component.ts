@@ -18,10 +18,12 @@ import { ViewTeamMembersComponent } from '../view-team-members/view-team-members
   styleUrls: ['./view-team.component.css']
 })
 export class ViewTeamComponent implements OnInit {
+  durationInSeconds: number = 5;
+  private _snackBar: any;
 
   constructor(private service: ServiceService, private router: Router,
     private dialog: MatDialog) { }
-
+    parentPosts : number[];
     TeamList: ITeam[] = [];
     userSubscription : Subscription;
     displayedColumns: string[] = ['teamId', 'teamName', 'projectName', 'year', 'members', 'isActive','actions'];
@@ -69,35 +71,36 @@ export class ViewTeamComponent implements OnInit {
   }
 
   onView(teamId : number){
-    console.log("Team id = " + teamId)
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    console.log("Subject called")
-    this.service.sendTeamId(teamId);
-    
-    this.dialog.open(ViewTeamMembersComponent ,{
-      height: '400px',
-      width: '600px',
-    });
+    this.router.navigate(['/viewTeamMember', teamId]);
   }
 
-  onEdit(prod : ITeam){
+  onEdit(prod : any) {
+    
+    
+  }
 
+  onAdd(teamId:number){
+    this.router.navigate(['/addTeamMember', teamId]);
   }
 
   removeTeam(prod : ITeam){
     console.log(prod.teamId)
       this.service.deleteTeam(prod.teamId).subscribe(
-        responseRemoveCartProductStatus => {
-          this.status = responseRemoveCartProductStatus;
-          if (this.status) {
-            alert("Team deleted successfully.");
-            this.ngOnInit();
-          }
-          else {
-            alert("Team could not be deleted. Please try after sometime.");
-          }
+        data => {
+          if(confirm("Are you sure to delete ?")){
+            if (this.status) {
+              this._snackBar.open("Team deleted successfully","ok", {
+                duration: this.durationInSeconds * 1000,
+              });
+              //alert("Team deleted successfully.");
+              this.ngOnInit();
+            }
+            else {
+              this._snackBar.open("Something went wrong","ok", {
+                duration: this.durationInSeconds * 1000,
+              });
+              //alert("Something went wrong");
+            }}
         });
     
   }

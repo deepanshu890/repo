@@ -1,6 +1,8 @@
 mat-toolbar {
     background: #004a9f;
     color: white;
+    width:100%;
+    
   }
   mat-toolbar-row {
     justify-content: left;
@@ -26,8 +28,7 @@ mat-toolbar {
   }
   
   .content {
-    height: 1000px;
-    width:1000px;
+    
     border-radius: 10px;
     margin: 16px;
     margin-left: 32px;
@@ -62,4 +63,14 @@ mat-toolbar {
   
     button {
       margin-left: -17px;    
+    }
+
+    .demo-button-container {
+      padding-bottom: 5px;
+      padding:20px;
+      margin-left:800px;
+    }
+    
+    .demo-button + .demo-button {
+      margin-left: 8px;
     }

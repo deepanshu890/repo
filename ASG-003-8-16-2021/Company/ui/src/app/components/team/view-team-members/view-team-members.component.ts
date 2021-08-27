@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild,Input } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
 import { ServiceService } from 'src/app/service/user-service/service.service';
 import { IUser } from 'src/app/models/user';
@@ -18,10 +18,10 @@ import { Subscription } from 'rxjs';
 export class ViewTeamMembersComponent implements OnInit {
 
   teamId : number;
-  constructor(private service: ServiceService, private router: Router,private dialog: MatDialog) { }
+  constructor(private service: ServiceService, private router: Router,private dialog: MatDialog,private route: ActivatedRoute) { }
   EmployeeList: IUser[] = [];
   userSubscription: Subscription;
-  displayedColumns: string[] = ['userId', 'addressId', 'firstName', 'lastName', 'emailId', 'gender', 'phoneNumber', 'addressLine', 'city', 'state', 'pincode', 'actions'];
+  displayedColumns: string[] = ['userId', 'addressId', 'firstName', 'lastName', 'emailId', 'gender', 'phoneNumber', 'addressLine', 'city', 'state', 'pincode'];
   dataSource = new MatTableDataSource<IUser>(this.EmployeeList);
   id : number = 0;
 
@@ -29,27 +29,14 @@ export class ViewTeamMembersComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   ngOnInit(): void {
-    this.userId();
-    
+   
+    this.teamId = this.route.snapshot.params['teamId'];
     this.getUserList(this.teamId);
 
   }
 
-  userId(){
-   console.log("Subject is called from child")
-    this.service.receiveTeamId().subscribe(data => {
-      this.id = 1;
-      this.teamId = data;
-    })
-
-    if(this.id == 1)  console.log("Subject received successfully")
-    else console.log("Unsuccessfull operation")
-    console.log("in child : TeamId = " + this.teamId)
-  
-  }
-
   getUserList(teamId : number) {
-    
+    console.log(teamId)
     this.userSubscription = this.service.getTeamMembers(teamId).subscribe(data => {
       this.dataSource.data = data;
       console.log(data)

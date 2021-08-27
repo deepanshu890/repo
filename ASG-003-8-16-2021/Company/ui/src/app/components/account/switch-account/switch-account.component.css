@@ -1,0 +1,44 @@
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+    padding:10px;
+  }
+  .mat-cell,
+  .mat-header-cell {
+    word-wrap: initial;
+    display: table-cell;
+    padding: 0px 0px;
+    line-break: unset;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: middle;
+  }
+  .mat-table {
+    border-collapse: separate;
+    border-spacing:04px;
+    overflow-x: scroll;
+    }
+  td, th {
+    padding: 20px;
+    text-align: center;
+    width: 25%;
+  }
+  body {
+    background-color: rgb(57, 105, 145);
+  }
+  .demo-table {
+    width: 100%;
+  }
+  
+  .demo-button-container {
+    padding-bottom: 5px;
+    padding:20px;
+  }
+  
+  .demo-button + .demo-button {
+    margin-left: 8px;
+  }

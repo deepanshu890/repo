@@ -5,4 +5,5 @@ export interface ITeam{
     year : number;
     members : number;
     isActive : boolean;
+    accountId : number;
 }

@@ -1,0 +1,68 @@
+<div class="container">
+  <mat-card class="first">
+    <h1 class="first1"> Teams</h1>
+    <div class="example-button-row">
+      <button mat-raised-button (click)="onCreate()">
+        <mat-icon>add</mat-icon>Create
+      </button>
+    </div>
+  </mat-card>
+  <br />
+  <br />
+  <br />
+
+  <div>
+    <mat-card class="second">
+      <div class="example-button-row">
+        <mat-grid-list cols="4" rowHeight="300px" gutterSize="100px">
+          <mat-grid-tile *ngFor="let cell of TeamList[0]">
+
+            <!-- <div *ngFor="let cell of TeamList[0]; let i = index"> -->
+            <!-- <div *ngFor="let j of cell[0]"> -->
+            <mat-card class="card1">
+              <mat-card-header>
+
+                <mat-card-title>{{cell.teamName}}</mat-card-title>
+                <div class="example-button-container">
+                  <button mat-mini-fab (click)="onAdd(cell.teamId)" color="accent" class="my-fab">
+                    <mat-icon class="one">add</mat-icon>
+                  </button>
+                </div>
+                <!-- <div class="example-button-row">
+                  <button>
+                    <mat-icon (click)="onAdd(cell.teamId)">add</mat-icon>
+                  </button>
+                </div> -->
+
+              </mat-card-header>
+              <mat-card-content class="alpha">
+                <ng-container *ngFor="let k of TeamList[1]">
+                  <ng-container *ngFor="let j of TeamList[2]">
+                    <ng-container *ngFor="let z of TeamList[3]">
+                    <ng-container *ngIf="cell.teamId == k.teamId && k.teamId == j.teamId && j.userId == z.userId">
+
+
+
+                      <button class="card2" mat-mini-fab matTooltip="{{z.firstName}} {{z.lastName}}" color="primary"
+                        aria-label="Example icon button with a menu icon">
+                        {{z.firstName[0]}}{{z.lastName[0]}}
+                      </button>
+
+
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+              </mat-card-content>
+            </mat-card>
+            <!-- </div> -->
+            <!-- </div> -->
+
+          </mat-grid-tile>
+
+        </mat-grid-list>
+
+      </div>
+    </mat-card>
+  </div>
+</div>

@@ -13,10 +13,10 @@ namespace Company.Services.Controllers
     [ApiController]
     public class UsersController : Controller
     {
-        CompanyRepository rep;
-        public UsersController()
+        ICompanyRepository rep;
+        public UsersController(ICompanyRepository _rep)
         {
-            rep = new CompanyRepository();
+            rep = _rep;
         }
 
         [HttpGet]

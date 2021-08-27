@@ -17,6 +17,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 
@@ -27,11 +29,13 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatTableModule,MatToolbarModule,MatPaginatorModule,MatSortModule,MatFormFieldModule,
     MatInputModule,MatSidenavModule,MatListModule,MatIconModule,MatDividerModule,MatMenuModule,
     MatCardModule,BrowserAnimationsModule,MatDialogModule,MatButtonModule,MatGridListModule,
+    MatTooltipModule,MatSnackBarModule,
   ],
   exports: [
     MatTableModule,MatToolbarModule,MatPaginatorModule,MatSortModule,MatFormFieldModule,
     MatInputModule,MatSidenavModule,MatListModule,MatIconModule,MatDividerModule,MatMenuModule,
     MatCardModule,BrowserAnimationsModule,MatDialogModule,MatButtonModule,MatGridListModule,
+    MatTooltipModule,MatSnackBarModule,
   ]
 })
 export class MaterialDesignModule { }

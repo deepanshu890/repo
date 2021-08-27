@@ -22,6 +22,9 @@ namespace Company.DAL.Models
         public virtual DbSet<TeamMembers> TeamMembers { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public DbSet<AddressUsers> AddressUsers { get; set; }
+        public virtual DbSet<Account> Account { get; set; }
+        public virtual DbSet<AccountTeam> AccountTeam { get; set; }
+        public virtual DbSet<SuperUsers> SuperUsers { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -58,6 +61,27 @@ namespace Company.DAL.Models
                 entity.Property(e => e.State)
                     .IsRequired()
                     .HasMaxLength(30);
+            });
+
+            modelBuilder.Entity<SuperUsers>(entity =>
+            {
+                entity.ToTable("SuperUsers", "SuperUsers");
+                entity.HasKey(e => e.Id)
+                    .HasName("pk_superId");
+
+
+
+                entity.Property(e => e.Id).HasColumnName("ID");
+                entity.Property(e => e.EmailId).HasColumnName("EmailID")
+                    .IsRequired()
+                    .HasMaxLength(60);
+
+
+
+
+                entity.Property(e => e.Password)
+                    .IsRequired()
+                    .HasMaxLength(60);
             });
 
             modelBuilder.Entity<Team>(entity =>
@@ -105,7 +129,67 @@ namespace Company.DAL.Models
                     .HasConstraintName("fk_user");
             });
 
-            modelBuilder.Entity<Users>(entity =>
+
+
+            //code added for account
+
+            modelBuilder.Entity<Account>(entity =>
+            {
+                entity.ToTable("Account", "Account");
+                entity.Property(e => e.AccountId).HasColumnName("AccountID");
+                entity.Property(e => e.AccountName)
+                .IsRequired()
+                .HasMaxLength(60);
+            });
+
+            modelBuilder.Entity<AccountTeam>(entity =>
+            {
+                entity.HasKey(e => e.Id)
+                    .HasName("pk_Id");
+
+
+
+                entity.ToTable("AccountTeam", "Account");
+
+
+
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+
+
+                entity.Property(e => e.TeamId).HasColumnName("TeamID");
+
+
+
+                entity.Property(e => e.AccountId).HasColumnName("AccountID");
+                entity.HasOne(d => d.Account)
+                 .WithMany(p => p.AccountTeam)
+                 .HasForeignKey(d => d.AccountId)
+                 .OnDelete(DeleteBehavior.ClientSetNull)
+                 .HasConstraintName("fk_accountId");
+
+
+
+                entity.HasOne(d => d.Team)
+                    .WithMany(p => p.AccountTeam)
+                    .HasForeignKey(d => d.TeamId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_teamId");
+            
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+                modelBuilder.Entity<Users>(entity =>
             {
                 entity.HasKey(e => e.UserId)
                     .HasName("pk_userId");

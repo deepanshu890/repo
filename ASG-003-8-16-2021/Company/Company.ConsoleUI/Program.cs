@@ -5,19 +5,17 @@ using System.Collections.Generic;
 
 namespace Company.ConsoleUI
 {
-   public class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             CompanyRepository rep = new CompanyRepository();
-            List<AddressUsers> u;
-            u = rep.getTeamMembers(502);
-            foreach(var i in u)
-            {
-                Console.WriteLine(i.UserId);
-                Console.WriteLine(i.FirstName);
-            }
-            }
+            SuperUsers s = new SuperUsers();
+            s.EmailId = "Deepanshu@email.com";
+            s.Password = "deepanshu@123";
+            Console.WriteLine(rep.ValidateCredentials(s));
+
         }
     }
+}
 

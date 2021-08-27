@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class AddUserComponent implements OnInit {
 
   constructor(private dialog: MatDialog, private fb: FormBuilder, private service: ServiceService,private router: Router) { }
-
+  // emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
   addForm = this.fb.group({
     first: ['', Validators.required],
     last: ['', Validators.required],

@@ -8,6 +8,7 @@ namespace Company.DAL.Models
         public Team()
         {
             TeamMembers = new HashSet<TeamMembers>();
+            AccountTeam = new HashSet<AccountTeam>();
         }
 
         public int TeamId { get; set; }
@@ -18,5 +19,6 @@ namespace Company.DAL.Models
         public bool? IsActive { get; set; }
 
         public virtual ICollection<TeamMembers> TeamMembers { get; set; }
+        public virtual ICollection<AccountTeam> AccountTeam { get; set; }
     }
 }

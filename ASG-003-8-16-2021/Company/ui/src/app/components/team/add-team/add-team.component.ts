@@ -42,8 +42,8 @@ export class AddTeamComponent implements OnInit {
   }
 
   adduser(teamName: string, projectName: string, year: number, members: number, isActive: number) {
-
-    this.service.addTeam(teamName,projectName,year,members,isActive)
+    var userId = localStorage.getItem("Id");
+    this.service.addTeam(teamName,projectName,year,members,isActive,userId)
       .subscribe(
         responseProductData => {
           //this.message = responseProductData;
@@ -51,7 +51,7 @@ export class AddTeamComponent implements OnInit {
             alert("Team added sucessfully.")
             this.ngOnInit();
           }
-          this.router.navigate(['/viewTeam']);
+          this.router.navigate(['/viewAccount']);
         }
       );
 

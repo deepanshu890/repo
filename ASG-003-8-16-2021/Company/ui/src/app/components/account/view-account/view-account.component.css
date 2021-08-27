@@ -1,0 +1,53 @@
+.example1{
+    max-width: 100%;
+}
+
+.example-button-row button {
+  margin-right: -10px;
+}
+.example-button-container{
+  size: 10px;
+}
+
+.mat-icon.one {
+  font-size: 14px;
+  padding: auto;
+  max-width: 10px;
+  margin-top: -10px;
+  margin-left: -3px;
+}
+
+.my-fab {
+  width: 20px;
+  height: 20px;
+  line-height: 14px;
+  font-size: 14px;
+}
+
+.card1{
+ border-color: salmon;
+ border-width: 10px;
+}
+
+
+mat-card.first{
+ 
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+mat-card.second{
+  margin-top: -20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+mat-card.third{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.first{
+  color: orange;
+}

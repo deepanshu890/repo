@@ -55,7 +55,7 @@
                     <button mat-icon-button color="warn" (click)="removeTeam(element)">
                         <mat-icon>delete_outline</mat-icon>
                     </button>
-                    <button mat-icon-button color="accent" >
+                    <button mat-icon-button color="accent"  (click)="onAdd(element.teamId)">
                         <mat-icon>add</mat-icon>
                     </button>
                     <button mat-icon-button (click)="onView(element.teamId)" >
